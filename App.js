@@ -108,5 +108,5 @@ const styles = StyleSheet.create({
   mid: {
     flex: 4,
     justifyContent: 'flex-start',
-  },
+  }
 });
