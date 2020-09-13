@@ -17,4 +17,20 @@ export const globalStyles = StyleSheet.create({
         marginTop: 8,
         fontFamily: 'montserrat-regular',
     },
+    buttonContainer: {
+        padding: 20,
+        margin: 40,
+        width: 200,
+    },
+    modalToggle: {
+        marginTop: 10,
+        borderWidth: 1,
+        borderColor: '#f2f2f2',
+        padding: 10,
+        borderRadius: 10,
+        alignSelf: 'center',
+    },
+    modalContent: {
+        flex: 1,
+    },
 })

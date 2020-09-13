@@ -1,30 +1,40 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image, Button, Linking, Platform } from 'react-native';
+import React, { useState } from 'react'
+import { StyleSheet, Text, View, Image, Button, Platform, Modal } from 'react-native';
 import { globalStyles } from '../styles/Global'
-import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+import { MaterialIcons } from "@expo/vector-icons"
 import myImg from '../images/img-edit.jpeg'
 
-export default function Home() {
+export default function Home({ navigation }) {
+    const [modalOpen, setModalOpen] = useState(false);
+
     return (
         <View style={globalStyles.container}>
 
+            <Modal visible={modalOpen} animationType='slide' style={globalStyles.modalContent}>
+                <View>
+                    <MaterialIcons
+                        name={"close"}
+                        size={30}
+                        onPress={() => setModalOpen(false)}
+                        style={globalStyles.modalToggle}
+                    />
+                </View>
+            </Modal>
+
             <View style={styles.navbar}>
-                <Icon
+                <MaterialIcons
                     name={Platform.OS === "ios" ? "ios-home" : "home"}
                     size={30}>
-                </Icon>
+                </MaterialIcons>
                 <View style={styles.nav} >
-                    <Icon
-                        name={"search-web"}
+                    <MaterialIcons
+                        name={"search"}
                         size={30}
-                        color='black'
-                        style={styles.nav_search}
+                        style={styles.navSearch}
                     />
-
-                    <Icon
-                        name={"github-face"}
+                    <MaterialIcons
+                        name={"person"}
                         size={30}
-                        color='black'
                     />
                 </View>
 
@@ -42,13 +52,23 @@ export default function Home() {
             </View>
 
             <View style={styles.buttonContainer}>
-                <Button
-                    title="Get Started"
-                    style={styles.button}
-                    onPress={() => this.onPress()}
-                    color='#B0925A'
-                    fontFamily='montserrat-regular'
-                />
+                <View style={styles.button}>
+                    <Button
+                        title="Details"
+                        onPress={() => navigation.navigate('Details')}
+                        color='#B0925A'
+                        fontFamily='montserrat-regular'
+                    />
+                </View>
+
+                <View style={styles.button}>
+                    <Button
+                        title="Register"
+                        onPress={() => setModalOpen(true)}
+                        color='#B0925A'
+                        fontFamily='montserrat-regular'
+                    />
+                </View>
             </View>
         </View >
     )
@@ -62,7 +82,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
-    nav_search: {
+    navSearch: {
         marginRight: 20,
     },
     nav: {
@@ -74,9 +94,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonContainer: {
-        padding: 20,
-        margin: 40,
-        width: 200,
+        flex: 1,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        width: '70%',
+    },
+    button: {
+        width: '40%',
+        height: 80
     },
     top: {
         marginTop: 50,
@@ -84,7 +109,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
-
     mid: {
         flex: 4,
         justifyContent: 'flex-start',
