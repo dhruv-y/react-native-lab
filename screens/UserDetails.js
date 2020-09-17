@@ -1,15 +1,26 @@
-import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
 import { globalStyles } from '../styles/Global'
 
 export default function UserDetails({ navigation }) {
     return (
         <View style={globalStyles.container}>
-            <Text>Details Screen</Text>
-            <View style={globalStyles.buttonContainer}>
+            <Text style={globalStyles.primaryTitle}>USER DETAILS</Text>
+            <View>
+                <View>
+                    <TextInput placeholder="First Name" />
+                    <TextInput placeholder="Last Name" />
+                </View>
+                <TextInput placeholder="Email" />
+                <TextInput
+                    secureTextEntry={true}
+                    placeholder="Password"
+                />
+            </View>
+
+            <View>
                 <Button
-                    title="Home"
-                    onPress={() => navigation.goBack()}
+                    title="SUBMIT"
                     color='#B0925A'
                     fontFamily='montserrat-regular'
                 />

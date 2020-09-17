@@ -3,21 +3,24 @@ import { StyleSheet, Text, View, Image, Button, Platform, Modal } from 'react-na
 import { globalStyles } from '../styles/Global'
 import { MaterialIcons } from "@expo/vector-icons"
 import myImg from '../images/img-edit.jpeg'
+import Register from '../components/Register'
 
 export default function Home({ navigation }) {
-    const [modalOpen, setModalOpen] = useState(false);
 
+    const [modalOpen, setModalOpen] = useState(false);
     return (
         <View style={globalStyles.container}>
 
-            <Modal visible={modalOpen} animationType='slide' style={globalStyles.modalContent}>
-                <View>
+            <Modal visible={modalOpen} animationType='slide' >
+                <View style={globalStyles.modalContent}>
                     <MaterialIcons
                         name={"close"}
                         size={30}
                         onPress={() => setModalOpen(false)}
                         style={globalStyles.modalToggle}
                     />
+
+                    <Register />
                 </View>
             </Modal>
 
@@ -78,7 +81,6 @@ const styles = StyleSheet.create({
     navbar: {
         height: 40,
         width: 380,
-        marginTop: 50,
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
