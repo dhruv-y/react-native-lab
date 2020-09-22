@@ -4,13 +4,14 @@ export const globalStyles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        paddingTop: 45,
+        paddingTop: 60,
     },
     primaryTitle: {
         color: "#B0925A",
         fontSize: 30,
         fontFamily: 'montserrat-regular',
         textAlign: 'center',
+        margin: 15,
     },
     secondaryTitle: {
         color: 'black',
@@ -20,7 +21,7 @@ export const globalStyles = StyleSheet.create({
     },
     buttonContainer: {
         padding: 20,
-        margin: 30,
+        margin: 20,
     },
     modalToggle: {
         marginTop: 10,

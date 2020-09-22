@@ -3,7 +3,8 @@ import { StyleSheet, Text, View, Image, Button, Platform, Modal } from 'react-na
 import { globalStyles } from '../styles/Global'
 import { MaterialIcons } from "@expo/vector-icons"
 import myImg from '../images/img-edit.jpeg'
-import Register from '../components/Register'
+import Login from '../components/Login'
+import Navbar from '../components/Navbar'
 
 export default function Home({ navigation }) {
 
@@ -19,29 +20,11 @@ export default function Home({ navigation }) {
                         onPress={() => setModalOpen(false)}
                         style={globalStyles.modalToggle}
                     />
-
-                    <Register />
+                    <Login />
                 </View>
             </Modal>
 
-            <View style={styles.navbar}>
-                <MaterialIcons
-                    name={Platform.OS === "ios" ? "ios-home" : "home"}
-                    size={30}>
-                </MaterialIcons>
-                <View style={styles.nav} >
-                    <MaterialIcons
-                        name={"search"}
-                        size={30}
-                        style={styles.navSearch}
-                    />
-                    <MaterialIcons
-                        name={"person"}
-                        size={30}
-                    />
-                </View>
-
-            </View>
+            <Navbar />
 
             <View style={styles.top}>
                 <Text style={globalStyles.primaryTitle}>DHRUV YADWADKAR</Text>
@@ -66,12 +49,13 @@ export default function Home({ navigation }) {
 
                 <View style={styles.button}>
                     <Button
-                        title="Register"
+                        title="Login"
                         onPress={() => setModalOpen(true)}
                         color='#B0925A'
                         fontFamily='montserrat-regular'
                     />
                 </View>
+
             </View>
         </View >
     )
@@ -106,13 +90,13 @@ const styles = StyleSheet.create({
         height: 80
     },
     top: {
-        marginTop: 50,
+        marginTop: 40,
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
     mid: {
-        flex: 4,
+        flex: 3,
         justifyContent: 'flex-start',
     }
 });
