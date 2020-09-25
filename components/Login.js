@@ -12,7 +12,7 @@ export default function Register() {
 
             <Formik
                 initialValues={{ email: '', password: '' }}
-                onSubmit={({ email, password }) => alert(`Credentials - ${email}/${password}`)}
+                onSubmit={({ email, password }) => alert(`Credentials - ${email} | ${password}`)}
             >
 
                 {(props) => (

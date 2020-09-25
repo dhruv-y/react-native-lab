@@ -46,5 +46,15 @@ export const globalStyles = StyleSheet.create({
         marginTop: 20,
         width: '80%',
         justifyContent: 'center',
-    }
+    },
+    picker: {
+        marginTop: 30,
+        borderWidth: 1,
+        borderColor: '#ddd',
+        width: 300,
+        borderRadius: 8,
+        alignSelf: 'center',
+        height: 50,
+        fontFamily: 'montserrat-regular',
+    },
 })

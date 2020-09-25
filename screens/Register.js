@@ -17,7 +17,6 @@ const Register = (props) => {
     return (
         <View style={globalStyles.container}>
             <Navbar />
-
             <View style={globalStyles.form}>
                 <Text style={globalStyles.primaryTitle}>REGISTER</Text>
                 <Field
