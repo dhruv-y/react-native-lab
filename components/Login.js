@@ -3,8 +3,8 @@ import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
 import { globalStyles } from '../styles/Global';
 import { Formik } from 'formik';
 
-export default function Register() {
-
+export default function Login() {
+    const [user, setUser] = useState('None')
 
     return (
         <View style={globalStyles.container}>
@@ -12,7 +12,7 @@ export default function Register() {
 
             <Formik
                 initialValues={{ email: '', password: '' }}
-                onSubmit={({ email, password }) => alert(`Credentials - ${email} | ${password}`)}
+                onSubmit={({ email, password }) => setUser(email)}
             >
 
                 {(props) => (
@@ -40,6 +40,7 @@ export default function Register() {
                                 onPress={props.handleSubmit}
                             />
                         </View>
+
                     </View>
                 )}
 

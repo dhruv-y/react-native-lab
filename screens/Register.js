@@ -8,7 +8,11 @@ const Register = (props) => {
 
     const { handleSubmit } = props;
 
-    const onSubmit = (values) => alert(`Welcome ${values.fname} ${values.lname}!`);
+    const [user, setUser] = useState('None')
+    const onSubmit = (values) => {
+        alert(`Redux Registration Successful - ${values.fname} ${values.lname}`)
+        setUser(values.email)
+    }
 
     const renderInput = ({ input: { onChange, ...input }, ...rest }) => {
         return <TextInput style={globalStyles.input} onChangeText={onChange} {...input} {...rest} />
@@ -19,6 +23,7 @@ const Register = (props) => {
             <Navbar />
             <View style={globalStyles.form}>
                 <Text style={globalStyles.primaryTitle}>REGISTER</Text>
+
                 <Field
                     name={'fname'}
                     props={{
@@ -58,8 +63,9 @@ const Register = (props) => {
                         onPress={handleSubmit(onSubmit)}
                     />
                 </View>
-            </View>
 
+            </View>
+            <Text style={globalStyles.secondaryTitle}>Logged in as <Text style={{ color: 'red' }}>{user}</Text></Text>
         </View >
     )
 }

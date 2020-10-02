@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import Home from './screens/Home';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import { AppNavigator } from './routes/AppNavigator'
 import { Provider } from 'react-redux';
-import store from './store';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { persistor, store } from './store';
 
 const getFonts = () => Font.loadAsync({
   'montserrat-regular': require('./assets/fonts/Montserrat-Regular.ttf'),
   'montserrat-bold': require('./assets/fonts/Montserrat-Bold.ttf')
 });
+
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -17,7 +18,9 @@ export default function App() {
   if (fontsLoaded) {
     return (
       <Provider store={store}>
-        <AppNavigator />
+        <PersistGate persistor={persistor} loading={null}>
+          <AppNavigator />
+        </PersistGate>
       </Provider>
     )
   } else {
