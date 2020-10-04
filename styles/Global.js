@@ -16,12 +16,12 @@ export const globalStyles = StyleSheet.create({
     secondaryTitle: {
         color: 'black',
         fontSize: 20,
-        marginTop: 8,
-        fontFamily: 'montserrat-bold',
+        marginTop: 6,
+        fontFamily: 'montserrat-regular',
     },
     subTitle: {
-        color: '#666',
-        fontSize: 18,
+        color: '#555',
+        fontSize: 17,
         marginTop: 8,
         fontFamily: 'montserrat-regular',
     },
