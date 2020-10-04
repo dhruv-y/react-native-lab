@@ -17,8 +17,9 @@ export default function Navbar() {
             />
             <View style={styles.nav} >
                 <MaterialIcons
-                    name={"search"}
+                    name={"folder-shared"}
                     size={25}
+                    onPress={() => navigation.navigate('Project')}
                     style={globalStyles.modalToggle}
                 />
                 <MaterialIcons

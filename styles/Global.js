@@ -17,6 +17,12 @@ export const globalStyles = StyleSheet.create({
         color: 'black',
         fontSize: 20,
         marginTop: 8,
+        fontFamily: 'montserrat-bold',
+    },
+    subTitle: {
+        color: '#666',
+        fontSize: 18,
+        marginTop: 8,
         fontFamily: 'montserrat-regular',
     },
     buttonContainer: {
