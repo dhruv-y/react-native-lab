@@ -1,22 +1,35 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
 import { globalStyles } from '../styles/Global';
-import { Field, reduxForm } from 'redux-form';
+import { connect, useDispatch, getState } from "react-redux";
 import Navbar from '../components/Navbar';
+import REGISTER_USER from '../reducers/registerReducer'
+import { store, persistor } from '../store'
 
-const Register = (props) => {
-
-    const { handleSubmit } = props;
-
-    const [user, setUser] = useState('None')
-    const onSubmit = (values) => {
-        alert(`Redux Registration Successful - ${values.fname} ${values.lname}`)
-        setUser(values.email)
+export default function Register({ navigation }) {
+    const dispatch = useDispatch()
+    const registerUser = user => {
+        const data = dispatch({ type: REGISTER_USER, payload: user })
+        console.log(data.payload)
+        console.log(store.getState())
+        alert(`Welcome ${fname} ${lname}!`)
     }
 
-    const renderInput = ({ input: { onChange, ...input }, ...rest }) => {
-        return <TextInput style={globalStyles.input} onChangeText={onChange} {...input} {...rest} />
-    };
+    const [fname, setFname] = useState("")
+    const [lname, setLname] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    /*
+    const handleSubmit = () => {
+        console.log(`Redux Registration Successful - ${fname} ${lname}`)
+        let registerDetails = {};
+        registerDetails.fname = fname;
+        registerDetails.lname = lname
+        registerDetails.email = email;
+        registerDetails.password = password;
+    }
+    */
 
     return (
         <View style={globalStyles.container}>
@@ -24,50 +37,50 @@ const Register = (props) => {
             <View style={globalStyles.form}>
                 <Text style={globalStyles.primaryTitle}>REGISTER</Text>
 
-                <Field
-                    name={'fname'}
-                    props={{
-                        placeholder: 'First Name'
-                    }}
-                    component={renderInput}
+                <TextInput
+                    placeholder="First Name"
+                    style={globalStyles.input}
+                    name='fname'
+                    value={fname}
+                    onChangeText={text => setFname(text)}
                 />
 
-                <Field
-                    name={'lname'}
-                    props={{
-                        placeholder: 'Last Name'
-                    }}
-                    component={renderInput}
+                <TextInput
+                    placeholder="Last Name"
+                    style={globalStyles.input}
+                    name='lname'
+                    value={lname}
+                    onChangeText={text => setLname(text)}
                 />
 
-                <Field
-                    name={'email'}
-                    props={{
-                        placeholder: 'Email'
-                    }}
-                    component={renderInput}
+                <TextInput
+                    placeholder="Email"
+                    style={globalStyles.input}
+                    name='email'
+                    value={email}
+                    onChangeText={text => setEmail(text)}
                 />
-                <Field
-                    name={'password'}
-                    props={{
-                        placeholder: 'Password',
-                        secureTextEntry: true
-                    }}
-                    component={renderInput}
+
+                <TextInput
+                    secureTextEntry={true}
+                    placeholder="Password"
+                    style={globalStyles.input}
+                    name='password'
+                    value={password}
+                    onChangeText={text => setPassword(text)}
                 />
+
                 <View style={globalStyles.buttonContainer}>
                     <Button
                         title="SUBMIT"
                         color='#B0925A'
                         fontFamily='montserrat-regular'
-                        onPress={handleSubmit(onSubmit)}
+                        onPress={() => registerUser({ fname, lname, email, password })}
+                        style={globalStyles.button}
                     />
                 </View>
-
             </View>
-            <Text style={globalStyles.secondaryTitle}>Logged in as <Text style={{ color: 'red' }}>{user}</Text></Text>
+            <Text style={globalStyles.secondaryTitle}>Logged in as <Text style={{ color: 'red' }}>{email}</Text></Text>
         </View >
     )
 }
-
-export default reduxForm({ form: 'test-form' })(Register);

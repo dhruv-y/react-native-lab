@@ -4,7 +4,7 @@ import { AppLoading } from 'expo';
 import { AppNavigator } from './routes/AppNavigator'
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import { persistor, store } from './store';
+import { store, persistor } from './store';
 
 const getFonts = () => Font.loadAsync({
   'montserrat-regular': require('./assets/fonts/Montserrat-Regular.ttf'),
