@@ -1,15 +1,17 @@
-export const REGISTER_USER = 'REGISTER_USER'
-
-const initialState = []
-
+const initialState = {
+    registerDetails: {
+        email: "", password: "", fname: "", lname: ""
+    }
+};
 const registerReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "REGISTER_USER":
+        case "SAVE_REGISTER_DETAIL": {
             return {
                 ...state,
-                registerDetails: action.payload
-            }
+                registerDetails: action.registerDetails
 
+            }
+        }
         default: {
             return state;
         }
