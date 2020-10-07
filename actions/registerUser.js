@@ -1,6 +1,6 @@
 export const registerUser = (registerDetails) => (
     {
-        type: "SAVE_REGISTER_DETAIL",
+        type: "SAVE_REGISTER_DETAILS",
         registerDetails: {
             fname: registerDetails.fname,
             lname: registerDetails.lname,

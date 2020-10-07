@@ -1,15 +1,17 @@
 const initialState = {
     registerDetails: {
-        email: "", password: "", fname: "", lname: ""
+        fname: "",
+        lname: "",
+        email: "",
+        password: "",
     }
 };
 const registerReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "SAVE_REGISTER_DETAIL": {
+        case "SAVE_REGISTER_DETAILS": {
             return {
                 ...state,
                 registerDetails: action.registerDetails
-
             }
         }
         default: {

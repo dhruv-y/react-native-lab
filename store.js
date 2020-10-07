@@ -11,7 +11,6 @@ const persisConfig = {
 };
 
 const persistedReducer = persistReducer(persisConfig, rootReducer);
-
 const store = createStore(
     persistedReducer,
     applyMiddleware(

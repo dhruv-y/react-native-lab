@@ -7,6 +7,7 @@ import { store, persistor } from '../store'
 import { registerUser } from "../actions/registerUser"
 
 class Register extends React.Component {
+    
     constructor(props) {
         super(props);
         this.state = { fname: "", lname: "", email: "", password: "" };
@@ -16,21 +17,30 @@ class Register extends React.Component {
         this.setLname = this.setLname.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    setEmail(email) {
+
+    handleSubmit = () => {
+        let registerDetails = {};
+        registerDetails.email = this.state.email;
+        registerDetails.password = this.state.password;
+        registerDetails.fname = this.state.fname;
+        registerDetails.lname = this.state.lname
+        this.props.reduxsaveRegisterDetails(registerDetails)
+        Alert.alert(`Welcome ${registerDetails.email}!`)
+    }
+
+    setEmail = (email) => {
         this.setState({ email });
     }
-    setPassword(password) {
+    setPassword = (password) => {
         this.setState({ password });
     }
-    setFname(fname) {
+    setFname = (fname) => {
         this.setState({ fname });
     }
-    setLname(lname) {
+    setLname = (lname) => {
         this.setState({ lname });
     }
-    handleSubmit() {
-        console.log(this.state);
-    }
+
 
     render() {
         return (
@@ -42,51 +52,35 @@ class Register extends React.Component {
                     <TextInput
                         placeholder="First Name"
                         style={globalStyles.input}
-                        onBlur={Keyboard.dismiss}
                         value={this.state.fname}
                         onChangeText={this.setFname}
                     />
-
                     <TextInput
                         placeholder="Last Name"
                         style={globalStyles.input}
-                        onBlur={Keyboard.dismiss}
                         value={this.state.lname}
                         onChangeText={this.setLname}
                     />
-
                     <TextInput
                         placeholder="Email"
                         style={globalStyles.input}
-                        onBlur={Keyboard.dismiss}
                         value={this.state.email}
                         onChangeText={this.setEmail}
                     />
-
                     <TextInput
                         secureTextEntry={true}
                         placeholder="Password"
                         style={globalStyles.input}
-                        onBlur={Keyboard.dismiss}
                         value={this.state.password}
                         onChangeText={this.setPassword}
                     />
-
                     <View style={globalStyles.buttonContainer}>
                         <Button
                             title="SUBMIT"
                             color='#B0925A'
                             fontFamily='montserrat-regular'
                             style={globalStyles.button}
-                            onPress={() => {
-                                let registerDetails = {};
-                                registerDetails.email = this.state.email;
-                                registerDetails.password = this.state.password;
-                                registerDetails.fname = this.state.fname;
-                                registerDetails.lname = this.state.lname
-                                this.props.reduxsaveRegisterDetails(registerDetails)
-                                Alert.alert(`Welcome ${registerDetails.email}!`)
-                            }}
+                            onPress={this.handleSubmit}
                         />
                     </View>
                 </View>
