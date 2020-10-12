@@ -21,6 +21,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "useNextNotificationsApi": true,
+      "package": "com.dyadwad.reactlab"
     }
   }
 }
